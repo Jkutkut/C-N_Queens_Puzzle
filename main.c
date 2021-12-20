@@ -1,20 +1,4 @@
-#include <unistd.h>
-#include <stdio.h>
-
-#define QUEEN "♛"
-
-#define CORNER "┼"
-#define CORNER_SIZE 4
-
-#define H_BORDER    "──────"
-#define WHITE_QUEEN "  ♛   "
-#define BLACK_QUEEN "··♛ ··"
-#define WHITE_FILL  "      "
-#define BLACK_FILL  "······"
-
-#define V_BORDER "│"
-
-#define N 8
+#include "project.h"
 
 int	ft_strlen(char *str)
 {
@@ -55,7 +39,7 @@ void	print_line(char *border, char *fill_even, char *fill_odd)
 	write(1, "\n", 1);
 }
 
-void	print_line_piece(int board[N], int h)
+/*void	print_line_piece(int board[N], int h)
 {
 	char	*fill_even;
 	char	*fill_odd;
@@ -65,41 +49,43 @@ void	print_line_piece(int board[N], int h)
 	{
 		fill_even = WHITE
 }
+*/
 
-void	print_board(int	board[N])
+void	print_board(int	board[N], t_chess_style style)
 {
 	int	i;
 
-	printf("\n");
-	print_line(CORNER, H_BORDER, H_BORDER);
 	i = 0;
+	print_line(style.corner, style.h_border, style.h_border);
 	while (i < N)
 	{
 		if (i % 2 == 0)
 		{
-			print_line(V_BORDER, "      ", "······");
-			print_line_piece(board, i);
-			print_line(V_BORDER, "      ", "······");
+			print_line(style.v_border, style.white_fill, style.black_fill);
+			print_line(style.v_border, style.white_queen, style.black_queen);
+			print_line(style.v_border, style.white_fill, style.black_fill);
 		}
 		else
 		{
-			print_line(V_BORDER, "······", "      ");
-			print_line_piece(board, i);
-			print_line(V_BORDER, "······", "      ");
+			print_line(style.v_border, style.black_fill, style.white_fill);
+			print_line(style.v_border, style.black_queen, style.white_queen);
+			print_line(style.v_border, style.black_fill, style.white_fill);
 		}
-		print_line(CORNER, H_BORDER, H_BORDER);
+		print_line(style.corner, style.h_border, style.h_border);
 		i++;
 	}
-	printf("\n");
+	ft_putstr("\n", 1);
 }
 
 int	main(void)
 {
+	t_chess_style style;
 	int	board[N];
 	int	i;
 
 	i = 0;
 	while (i < N)
 		board[i++] = 0;
-	print_board(board);
+	style = CLASSIC_STYLE;
+	print_board(board, style);
 }
