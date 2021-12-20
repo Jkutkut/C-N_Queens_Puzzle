@@ -6,23 +6,22 @@
 /*   By: jre-gonz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 20:10:13 by jre-gonz          #+#    #+#             */
-/*   Updated: 2021/12/11 12:28:46 by jre-gonz         ###   ########.fr       */
+/*   Updated: 2021/12/20 16:08:44 by jkutkut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdlib.h>
 
-#define SIZE 10
+#define N 8
 #define EMPTY ':'
 
-void	print(char board[SIZE])
+void	print(char board[N])
 {
-	write(1, board, SIZE);
+	write(1, board, N);
 	write(1, "\n", 1);
 }
 
-int	possible(char board[SIZE], int index, char h)
+int	possible(char board[N], int index, char h)
 {
 	int	i;
 
@@ -38,18 +37,18 @@ int	possible(char board[SIZE], int index, char h)
 	return (1);
 }
 
-void	solve(char board[SIZE], int *solutions)
+void	solve(char board[N], int *solutions)
 {
 	int	i;
 	int	h;
 
 	i = 0;
-	while (i < SIZE)
+	while (i < N)
 	{
 		if (board[i] == EMPTY)
 		{
 			h = 0;
-			while (h < SIZE)
+			while (h < N)
 			{
 				if (possible(board, i, h + 48))
 				{
@@ -69,11 +68,11 @@ void	solve(char board[SIZE], int *solutions)
 
 int	ft_ten_queens_puzzle(void)
 {
-	char	board[SIZE];
+	char	board[N];
 	int		i;
 
 	i = 0;
-	while (i < SIZE)
+	while (i < N)
 		board[i++] = EMPTY;
 	i = 0;
 	solve(board, &i);
