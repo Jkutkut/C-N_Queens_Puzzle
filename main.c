@@ -2,16 +2,7 @@
 #include <stdio.h>
 
 #define QUEEN "♛"
-
 #define N 8
-
-/*
-+---+-------+
-|   |
-| ♛ |
-|   |
-+---+-------+
-*/
 
 void	print_board(void)
 {
