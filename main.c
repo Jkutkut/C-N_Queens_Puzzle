@@ -6,8 +6,12 @@
 #define CORNER "┼"
 #define CORNER_SIZE 4
 
-#define H_BORDER "──────"
-#define H_BORDER_SIZE 18
+#define H_BORDER    "──────"
+#define WHITE_QUEEN "  ♛   "
+#define BLACK_QUEEN "··♛ ··"
+#define WHITE_FILL  "      "
+#define BLACK_FILL  "······"
+
 #define V_BORDER "│"
 
 #define N 8
@@ -51,44 +55,51 @@ void	print_line(char *border, char *fill_even, char *fill_odd)
 	write(1, "\n", 1);
 }
 
+void	print_line_piece(int board[N], int h)
+{
+	char	*fill_even;
+	char	*fill_odd;
+	int		fill_even_size;
 
-void	print_board(void)
+	if (h % 2 == 0)
+	{
+		fill_even = WHITE
+}
+
+void	print_board(int	board[N])
 {
 	int	i;
-	int	j;
 
+	printf("\n");
 	print_line(CORNER, H_BORDER, H_BORDER);
 	i = 0;
 	while (i < N)
 	{
-		j = 0;
-		while (j < 3)
+		if (i % 2 == 0)
 		{
-			if (i % 2 == 0)
-				print_line(V_BORDER, "      ", "······");
-			else
-				print_line(V_BORDER, "······", "      ");
-			j++;
+			print_line(V_BORDER, "      ", "······");
+			print_line_piece(board, i);
+			print_line(V_BORDER, "      ", "······");
+		}
+		else
+		{
+			print_line(V_BORDER, "······", "      ");
+			print_line_piece(board, i);
+			print_line(V_BORDER, "······", "      ");
 		}
 		print_line(CORNER, H_BORDER, H_BORDER);
 		i++;
 	}
+	printf("\n");
 }
 
 int	main(void)
 {
-	printf("+------+\n");
-	printf("|      |\n");
-	printf("|  ♛   |\n");
-	printf("|      |\n");
-	printf("+------+\n");
-	printf("|······|\n");
-	printf("|··♛ ··|\n");
-	printf("|······|\n");
-	printf("+------+\n");
-	
-	printf("\n");
-	printf("\n");
-	print_board();
-	printf("\n");
+	int	board[N];
+	int	i;
+
+	i = 0;
+	while (i < N)
+		board[i++] = 0;
+	print_board(board);
 }
