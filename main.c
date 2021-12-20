@@ -10,9 +10,14 @@ int	ft_strlen(char *str)
 	return (l);
 }
 
-void	ft_putstr(char *str, int l)
+void	ft_putstrlen(char *str, int l)
 {
 	write(1, str, l);
+}
+
+void	ft_putstr(char *str)
+{
+	ft_putstrlen(str, ft_strlen(str));
 }
 
 void	print_line(char *border, char *fill_even, char *fill_odd)
@@ -26,30 +31,49 @@ void	print_line(char *border, char *fill_even, char *fill_odd)
 	border_size = ft_strlen(border);
 	fill_even_size = ft_strlen(fill_even);
 	fill_odd_size = ft_strlen(fill_odd);
-	ft_putstr(border, border_size);
+	ft_putstrlen(border, border_size);
 	while (i < N)
 	{
 		if (i % 2 == 0)
-			ft_putstr(fill_even, fill_even_size);
+			ft_putstrlen(fill_even, fill_even_size);
 		else
-			ft_putstr(fill_odd, fill_odd_size);
-		ft_putstr(border, border_size);
+			ft_putstrlen(fill_odd, fill_odd_size);
+		ft_putstrlen(border, border_size);
 		i++;
 	}
 	write(1, "\n", 1);
 }
 
-/*void	print_line_piece(int board[N], int h)
+void	print_line_piece(int board[N], t_chess_style style, int h)
 {
-	char	*fill_even;
-	char	*fill_odd;
-	int		fill_even_size;
+	int	i;
 
-	if (h % 2 == 0)
+	i = 0;
+	ft_putstr(style.v_border);
+	while (i < N)
 	{
-		fill_even = WHITE
+		if ((i + h) % 2 == 0)
+		{
+			if (board[i] == h)
+				ft_putstr(style.white_queen);
+			else
+				ft_putstr(style.white_fill);
+			ft_putstr(style.v_border);
+		}
+		else
+		{
+			if (board[i] == h)
+				ft_putstr(style.black_queen);
+			else
+				ft_putstr(style.black_fill);
+			ft_putstr(style.v_border);
+			
+		}
+		i++;
+	}
+	ft_putstrlen("\n", 1);
 }
-*/
+
 
 void	print_board(int	board[N], t_chess_style style)
 {
@@ -62,19 +86,19 @@ void	print_board(int	board[N], t_chess_style style)
 		if (i % 2 == 0)
 		{
 			print_line(style.v_border, style.white_fill, style.black_fill);
-			print_line(style.v_border, style.white_queen, style.black_queen);
+			print_line_piece(board, style, i);
 			print_line(style.v_border, style.white_fill, style.black_fill);
 		}
 		else
 		{
 			print_line(style.v_border, style.black_fill, style.white_fill);
-			print_line(style.v_border, style.black_queen, style.white_queen);
+			print_line_piece(board, style, i);
 			print_line(style.v_border, style.black_fill, style.white_fill);
 		}
 		print_line(style.corner, style.h_border, style.h_border);
 		i++;
 	}
-	ft_putstr("\n", 1);
+	ft_putstrlen("\n", 1);
 }
 
 int	main(void)
@@ -83,9 +107,9 @@ int	main(void)
 	int	board[N];
 	int	i;
 
-	i = 0;
-	while (i < N)
-		board[i++] = 0;
+	i = -1;
+	while (++i < N)
+		board[i] = i;
 	style = CLASSIC_STYLE;
 	print_board(board, style);
 }
