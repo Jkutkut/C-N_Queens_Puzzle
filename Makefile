@@ -1,20 +1,25 @@
+
+# Compiler options
 CC=gcc
 FLAGS=-Wall -Wextra
+COMPILE=$(CC) $(FLAGS)
+
 
 EXE_NAME=representation
 
-# H_FILES=src/project.h src/output/output.h
-# H_FILES=$(wildcard src/*/*.h)
+H_FILES=src/output/output.h src/project.h  #src/style/chess_style.h
 
-# main: main.o $(H_FILES)
-# 	$(CC) bin/main.o $(H_FILES) -o $(EXE_NAME)
+# Style
+# STYLE=src/style/classic_chess_style.h
 
-OUTPUT = ft_putstr.o ft_putstrlen.o ft_strlen.o
+MAIN=src/main.c
+OUTPUT_O=ft_putstr.o ft_putstrlen.o ft_strlen.o
+OUTPUT=$(wildcard bin/output/*.o)
 
 
-all: $(OUTPUT)
-	tree bin/
-	echo "$(OUTPUT)"
+all: $(MAIN) $(H_FILES) $(STYLE)  $(OUTPUT_O)
+	$(info Compiling all into $(EXE_NAME))
+	$(COMPILE) $(MAIN) $(H_FILES) $(STYLE) $(OUTPUT) -o $(EXE_NAME)
 
 # Binary files
 bin:
@@ -22,18 +27,15 @@ bin:
 bin/output: bin
 	mkdir bin/output
 
-main.o: bin src/main.c
-	$(CC) -c src/main.c -o bin/main.o
-
 # General Output
 ft_putstr.o: bin/output src/output/ft_putstr.c
-	$(CC) -c src/output/ft_putstr.c -o bin/output/ft_putstr.o
+	$(COMPILE) -c src/output/ft_putstr.c -o bin/output/ft_putstr.o
 
 ft_putstrlen.o: bin/output src/output/ft_putstrlen.c
-	$(CC) -c src/output/ft_putstrlen.c -o bin/output/ft_putstrlen.o
+	$(COMPILE) -c src/output/ft_putstrlen.c -o bin/output/ft_putstrlen.o
 
 ft_strlen.o: bin/output src/output/ft_strlen.c
-	$(CC) -c src/output/ft_strlen.c -o bin/output/ft_strlen.o
+	$(COMPILE) -c src/output/ft_strlen.c -o bin/output/ft_strlen.o
 
 
 # Clean logic

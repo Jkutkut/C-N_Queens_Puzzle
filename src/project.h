@@ -3,10 +3,12 @@
 #define PROJECT_H
 
 #include <unistd.h>
-#include "output.h"
+
+#include "output/output.h"
+
+#include "chess/style/chess_style.h"
+typedef struct s_chess_style t_chess_style;
 
 #define N 8
-
-typedef struct s_chess_style t_chess_style;
 
 #endif
