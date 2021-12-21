@@ -1,4 +1,5 @@
 #include "project.h"
+
 #include "classic_style.h"
 
 void	print_line(char *border, char *fill_even, char *fill_odd)
