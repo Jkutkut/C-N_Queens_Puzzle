@@ -28,8 +28,4 @@ typedef struct s_chess_style
 	char *black_fill;
 } t_chess_style;
 
-#define CLASSIC_STYLE ((t_chess_style) { .corner = "┼", .v_border = "│", .h_border = "──────", .white_queen = "  ♛   ", .black_queen = "··♛ ··", .white_fill = "      ", .black_fill = "······" })
-
-
-
 #endif

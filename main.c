@@ -1,4 +1,6 @@
 #include "project.h"
+#include "classic_style.h"
+
 
 int	ft_strlen(char *str)
 {
@@ -44,7 +46,7 @@ void	print_line(char *border, char *fill_even, char *fill_odd)
 	write(1, "\n", 1);
 }
 
-void	print_line_piece(int board[N], t_chess_style style, int h)
+void	print_line_piece(char board[N], t_chess_style style, int h)
 {
 	int	i;
 
@@ -75,7 +77,7 @@ void	print_line_piece(int board[N], t_chess_style style, int h)
 }
 
 
-void	print_board(int	board[N], t_chess_style style)
+void	print_board(char	board[N], t_chess_style style)
 {
 	int	i;
 
@@ -104,12 +106,12 @@ void	print_board(int	board[N], t_chess_style style)
 int	main(void)
 {
 	t_chess_style style;
-	int	board[N];
+	char	board[N];
 	int	i;
 
 	i = -1;
 	while (++i < N)
 		board[i] = i;
-	style = CLASSIC_STYLE;
+	style = STYLE;
 	print_board(board, style);
 }
