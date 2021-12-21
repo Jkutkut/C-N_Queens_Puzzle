@@ -1,27 +1,6 @@
 #include "project.h"
 #include "classic_style.h"
 
-
-int	ft_strlen(char *str)
-{
-	int l;
-
-	l = 0;
-	while (str[l])
-		l++;
-	return (l);
-}
-
-void	ft_putstrlen(char *str, int l)
-{
-	write(1, str, l);
-}
-
-void	ft_putstr(char *str)
-{
-	ft_putstrlen(str, ft_strlen(str));
-}
-
 void	print_line(char *border, char *fill_even, char *fill_odd)
 {
 	int	i;

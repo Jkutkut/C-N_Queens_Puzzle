@@ -28,4 +28,9 @@ typedef struct s_chess_style
 	char *black_fill;
 } t_chess_style;
 
+
+int		ft_strlen(char *str);
+void	ft_putstrlen(char *str, int l);
+void	ft_putstr(char *str);
+
 #endif
