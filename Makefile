@@ -1,18 +1,25 @@
 CC=gcc
 FLAGS=-Wall -Wextra
 
-# H_FILES=src/project.h src/output/output.h
-H_FILES=$(wildcard src/*/*.h)
-
 EXE_NAME=representation
 
-main: main.o $(H_FILES)
-	$(CC) bin/main.o $(H_FILES) -o $(EXE_NAME)
+# H_FILES=src/project.h src/output/output.h
+# H_FILES=$(wildcard src/*/*.h)
+
+# main: main.o $(H_FILES)
+# 	$(CC) bin/main.o $(H_FILES) -o $(EXE_NAME)
+
+OUTPUT = ft_putstr.o ft_putstrlen.o ft_strlen.o
+
+
+all: $(OUTPUT)
+	tree bin/
+	echo "$(OUTPUT)"
 
 # Binary files
 bin:
 	mkdir bin
-bin/output:
+bin/output: bin
 	mkdir bin/output
 
 main.o: bin src/main.c
@@ -29,8 +36,13 @@ ft_strlen.o: bin/output src/output/ft_strlen.c
 	$(CC) -c src/output/ft_strlen.c -o bin/output/ft_strlen.o
 
 
+# Clean logic
+fclean: clean_main clean_bin
 
+clean_main:
+	$(info Removing $(EXE_NAME))
+	rm -f $(EXE_NAME)
 
-fclean:
-	rm $(EXE_NAME)
-	rm -rf bin
+clean_bin:
+	$(info Removing binary directory)
+	rm -rf ./bin
