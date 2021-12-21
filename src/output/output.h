@@ -7,6 +7,6 @@
 
 int		ft_strlen(char *str);
 void	ft_putstr(char *str);
-void	ft_putstrlen(char *str, int l)
+void	ft_putstrlen(char *str, int l);
 
 #endif
