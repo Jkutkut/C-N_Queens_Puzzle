@@ -1,4 +1,4 @@
-void	solve(char board[N], int *solutions)
+void	ft_solve(char board[N], int *solutions)
 {
 	int	i;
 	int	h;
