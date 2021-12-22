@@ -10,14 +10,14 @@ EXE_NAME=representation
 H_FILES=src/output/output.h src/project.h  #src/style/chess_style.h
 
 # Style
-# STYLE=src/style/classic_chess_style.h
+STYLE=src/chess/style/classic_chess_style.h
 
 MAIN=src/main.c
 OUTPUT_O=ft_putstr.o ft_putstrlen.o ft_strlen.o
 OUTPUT=$(wildcard bin/output/*.o)
 
 
-all: $(MAIN) $(H_FILES) $(STYLE)  $(OUTPUT_O)
+all: $(MAIN) $(H_FILES) $(STYLE) $(OUTPUT_O)
 	$(info Compiling all into $(EXE_NAME))
 	$(COMPILE) $(MAIN) $(H_FILES) $(STYLE) $(OUTPUT) -o $(EXE_NAME)
 
