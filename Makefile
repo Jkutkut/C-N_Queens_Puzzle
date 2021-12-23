@@ -18,6 +18,7 @@ all: $(MAIN) binaries src/chess/style/style.h
 
 # Binary files
 bin:
+	$(info Creating bin directory to store all the object files)
 	mkdir bin
 bin/output: bin
 	mkdir bin/output
@@ -36,6 +37,7 @@ bin/output/ft_strlen.o: src/output/ft_strlen.c
 
 # Style
 src/chess/style/style.h:
+	$(info Usign the style from $(STYLE_FILE))
 	cp $(STYLE_FILE) src/chess/style/style.h
 
 # Clean logic
