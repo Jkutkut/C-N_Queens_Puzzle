@@ -8,9 +8,9 @@ COMPILE=$(CC) $(FLAGS)
 EXE_NAME=representation
 
 MAIN=src/main.c
-OUTPUT=$(wildcard src/output/*.c)
 OUTPUT_O=bin/output/ft_putstr.o bin/output/ft_strlen.o bin/output/ft_putstrlen.o
-
+STYLE_FILE=src/chess/style/classic_chess_style.h
+#STYLE_FILE=src/chess/style/alternative_chess_style.h
 
 all: $(MAIN) binaries src/chess/style/style.h
 	$(info Compiling all into $(EXE_NAME))
@@ -36,7 +36,7 @@ bin/output/ft_strlen.o: src/output/ft_strlen.c
 
 # Style
 src/chess/style/style.h:
-	cp src/chess/style/alternative_chess_style.h src/chess/style/style.h
+	cp $(STYLE_FILE) src/chess/style/style.h
 
 # Clean logic
 .DELETE_ON_ERROR:
