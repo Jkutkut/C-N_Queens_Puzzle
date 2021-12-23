@@ -10,7 +10,7 @@
 
 typedef struct s_chess_style t_chess_style;
 
-#include "chess/style/classic_chess_style.h"
+#include "chess/style/style.h"
 
 #define N 8
 
