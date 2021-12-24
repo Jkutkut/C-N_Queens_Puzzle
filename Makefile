@@ -1,7 +1,7 @@
 # Compiler options
 CC=gcc
 FLAGS=-Wall -Wextra
-COMPILE=$(CC) $(FLAGS)
+COMPILE=@$(CC) $(FLAGS)
 
 
 EXE_NAME=representation
@@ -9,31 +9,37 @@ EXE_NAME=representation
 MAIN=src/main.c
 OUTPUT=bin/output/ft_putstr.o bin/output/ft_strlen.o bin/output/ft_putstrlen.o
 CHESS_LOGIC=bin/chess/logic/ft_possible_queen.o bin/chess/logic/ft_solve.o bin/chess/logic/ft_n_queens_puzzle.o bin/chess/output/print_board.o bin/atoi/ft_atoi.o
-STYLE_FILE=src/chess/style/classic_chess_style.h
-#STYLE_FILE=src/chess/style/alternative_chess_style.h
 
-all: $(MAIN) binaries  src/chess/style/style.h
-	$(info Compiling all into $(EXE_NAME))
-	@$(COMPILE) $(MAIN) $(OUTPUT) $(CHESS_LOGIC) -o $(EXE_NAME)
+CHESS_STYLE=classic
+
+all: $(EXE_NAME)
+
+alternative: CHESS_STYLE=alternative $(EXE_NAME)
 
 # Binary files
+$(EXE_NAME): $(MAIN) binaries  src/chess/style/style.h
+	$(info Compiling all into $(EXE_NAME))
+	$(COMPILE) $(MAIN) $(OUTPUT) $(CHESS_LOGIC) -o $(EXE_NAME)
+
 bin:
 	$(info Creating bin directory to store all the object files)
-	mkdir bin
+	@echo "bin\n├─chess\n│   ├─logic\n│   └─output\n├─output\n└─atoi"
+	@mkdir bin
+
 bin/output: bin
-	mkdir bin/output
+	@mkdir bin/output
 
 bin/chess: bin
-	mkdir bin/chess
+	@mkdir bin/chess
 
 bin/atoi: bin
-	mkdir bin/atoi
+	@mkdir bin/atoi
 
 bin/chess/logic: bin/chess
-	mkdir bin/chess/logic
+	@mkdir bin/chess/logic
 
 bin/chess/output: bin/chess
-	mkdir bin/chess/output
+	@mkdir bin/chess/output
 
 binaries: bin/output bin/chess/logic bin/chess/output bin/atoi $(OUTPUT) $(CHESS_LOGIC)
 
@@ -54,8 +60,10 @@ bin/output/ft_strlen.o: src/output/ft_strlen.c
 # Chess logic
 bin/chess/logic/ft_possible_queen.o: src/chess/logic/ft_possible_queen.c
 	$(COMPILE) -c src/chess/logic/ft_possible_queen.c -o bin/chess/logic/ft_possible_queen.o
+
 bin/chess/logic/ft_solve.o: src/chess/logic/ft_solve.c
 	$(COMPILE) -c src/chess/logic/ft_solve.c -o bin/chess/logic/ft_solve.o
+
 bin/chess/logic/ft_n_queens_puzzle.o: src/chess/logic/ft_n_queens_puzzle.c
 	$(COMPILE) -c src/chess/logic/ft_n_queens_puzzle.c -o bin/chess/logic/ft_n_queens_puzzle.o
 
@@ -64,9 +72,9 @@ bin/chess/output/print_board.o: bin/chess/output src/chess/output/print_board.c
 	$(COMPILE) -c src/chess/output/print_board.c -o bin/chess/output/print_board.o
 
 # Style
-src/chess/style/style.h:
+src/chess/style/style.h: src/chess/style/$(CHESS_STYLE)_chess_style.h
 	$(info Usign the style from $(STYLE_FILE))
-	cp $(STYLE_FILE) src/chess/style/style.h
+	@cp -f src/chess/style/$(CHESS_STYLE)_chess_style.h src/chess/style/style.h
 
 # Clean logic
 .DELETE_ON_ERROR:
