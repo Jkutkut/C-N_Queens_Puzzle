@@ -2,17 +2,20 @@
 
 #define SIZE 8
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_chess_style style;
-	/*char	board[SIZE];
-	int	i;
+	int s;
 
-	i = -1;
-	while (++i < SIZE)
-		board[i] = (i + 3) % SIZE;
+	s = SIZE;
 	style = STYLE;
-	print_board(board, SIZE, style);*/
-	style = STYLE;
-	ft_n_queens_puzzle(SIZE, style);
+	if (argc == 2)
+		s = ft_atoi(argv[1]);
+	if (s < 4)
+	{
+		ft_putstr("The minimum size is 4\n");
+		return (1);
+	}
+	ft_n_queens_puzzle(s, style);
+	return (0);
 }
