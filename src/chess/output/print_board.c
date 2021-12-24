@@ -1,6 +1,6 @@
-#include "project.h"
+#include "chess_output.h"
 
-void	print_line(char *border, char *fill_even, char *fill_odd)
+void	print_line(int N, char *border, char *fill_even, char *fill_odd)
 {
 	int	i;
 	int	border_size;
@@ -24,7 +24,7 @@ void	print_line(char *border, char *fill_even, char *fill_odd)
 	write(1, "\n", 1);
 }
 
-void	print_line_piece(char board[N], t_chess_style style, int h)
+void	print_line_piece(char *board, int N, t_chess_style style, int h)
 {
 	int	i;
 
@@ -55,27 +55,27 @@ void	print_line_piece(char board[N], t_chess_style style, int h)
 }
 
 
-void	print_board(char board[N], t_chess_style style)
+void	print_board(char *board, int N, t_chess_style style)
 {
 	int	i;
 
 	i = 0;
-	print_line(style.corner, style.h_border, style.h_border);
+	print_line(N, style.corner, style.h_border, style.h_border);
 	while (i < N)
 	{
 		if (i % 2 == 0)
 		{
-			print_line(style.v_border, style.white_fill, style.black_fill);
-			print_line_piece(board, style, i);
-			print_line(style.v_border, style.white_fill, style.black_fill);
+			print_line(N, style.v_border, style.white_fill, style.black_fill);
+			print_line_piece(N, board, style, i);
+			print_line(N, style.v_border, style.white_fill, style.black_fill);
 		}
 		else
 		{
-			print_line(style.v_border, style.black_fill, style.white_fill);
-			print_line_piece(board, style, i);
-			print_line(style.v_border, style.black_fill, style.white_fill);
+			print_line(N, style.v_border, style.black_fill, style.white_fill);
+			print_line_piece(N, board, style, i);
+			print_line(N, style.v_border, style.black_fill, style.white_fill);
 		}
-		print_line(style.corner, style.h_border, style.h_border);
+		print_line(N, style.corner, style.h_border, style.h_border);
 		i++;
 	}
 	ft_putstrlen("\n", 1);

@@ -13,7 +13,7 @@ void	ft_solve(char *board, int N, int *solutions, t_chess_style style)
 			h = 0;
 			while (h < N)
 			{
-				if (possible(board, i, h + 48))
+				if (ft_possible_queen(board, N, i, h + 48))
 				{
 					board[i] = h + 48;
 					ft_solve(board, N, solutions, style);
@@ -25,6 +25,6 @@ void	ft_solve(char *board, int N, int *solutions, t_chess_style style)
 		}
 		i++;
 	}
-	print_board(board, style);
+	print_board(board, N, style);
 	*solutions = *solutions + 1;
 }

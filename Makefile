@@ -50,6 +50,10 @@ bin/chess/logic/ft_solve.o: src/chess/logic/ft_solve.c
 bin/chess/logic/ft_ten_queens_puzzle.o: src/chess/logic/ft_ten_queens_puzzle.c
 	$(COMPILE) -c src/chess/logic/ft_ten_queens_puzzle.c -o bin/chess/logic/ft_ten_queens_puzzle.o
 
+# Print_board
+bin/chess/output/print_board.o: bin/chess/output src/chess/output/print_board.c
+	$(COMPILE) -c src/chess/output/print_board.c -o bin/chess/output/print_board.o
+
 # Style
 src/chess/style/style.h:
 	$(info Usign the style from $(STYLE_FILE))

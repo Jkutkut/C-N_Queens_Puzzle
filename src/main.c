@@ -10,5 +10,5 @@ int	main(void)
 	while (++i < N)
 		board[i] = (i + 3) % N;
 	style = STYLE;
-	print_board(board, style);
+	print_board(board, N, style);
 }

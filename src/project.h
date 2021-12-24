@@ -5,10 +5,8 @@
 #include <unistd.h>
 
 #include "output/output.h"
-
 #include "chess/style/chess_style.h"
-
-typedef struct s_chess_style t_chess_style;
+#include "chess/output/chess_output.h"
 
 #include "chess/style/style.h"
 
