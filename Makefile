@@ -15,7 +15,7 @@ STYLE_FILE=src/chess/style/classic_chess_style.h
 
 all: $(MAIN) binaries src/chess/style/style.h
 	$(info Compiling all into $(EXE_NAME))
-	$(COMPILE) $(MAIN) $(OUTPUT) -o $(EXE_NAME)
+	$(COMPILE) $(MAIN) $(OUTPUT) $(CHESS_LOGIC)  -o $(EXE_NAME)
 
 # Binary files
 bin:

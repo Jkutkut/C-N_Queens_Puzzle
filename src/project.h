@@ -10,6 +10,4 @@
 
 #include "chess/style/style.h"
 
-#define N 8
-
 #endif

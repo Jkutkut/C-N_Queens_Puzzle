@@ -66,13 +66,13 @@ void	print_board(char *board, int N, t_chess_style style)
 		if (i % 2 == 0)
 		{
 			print_line(N, style.v_border, style.white_fill, style.black_fill);
-			print_line_piece(N, board, style, i);
+			print_line_piece(board, N, style, i);
 			print_line(N, style.v_border, style.white_fill, style.black_fill);
 		}
 		else
 		{
 			print_line(N, style.v_border, style.black_fill, style.white_fill);
-			print_line_piece(N, board, style, i);
+			print_line_piece(board, N, style, i);
 			print_line(N, style.v_border, style.black_fill, style.white_fill);
 		}
 		print_line(N, style.corner, style.h_border, style.h_border);
