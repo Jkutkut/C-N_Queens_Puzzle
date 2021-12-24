@@ -16,7 +16,7 @@ void	ft_solve(char *board, int N, int *solutions, t_chess_style style)
 				if (possible(board, i, h + 48))
 				{
 					board[i] = h + 48;
-					ft_solve(board, solutions, style);
+					ft_solve(board, N, solutions, style);
 					board[i] = EMPTY;
 				}
 				h++;
