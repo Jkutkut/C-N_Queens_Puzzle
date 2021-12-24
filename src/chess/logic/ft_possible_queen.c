@@ -1,10 +1,9 @@
-#define N
-int	ft_possible_queen(char board[N], int index, char h)
+int	ft_possible_queen(char *board, int N, int index, char h)
 {
 	int	i;
 
 	i = 0;
-	while (i < index)
+	while (i < index && i < N)
 	{
 		if (board[i] == h)
 			return (0);
