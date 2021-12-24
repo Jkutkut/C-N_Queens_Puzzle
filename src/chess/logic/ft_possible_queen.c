@@ -1,3 +1,4 @@
+#include "n_queens.h"
 int	ft_possible_queen(char *board, int N, int index, char h)
 {
 	int	i;

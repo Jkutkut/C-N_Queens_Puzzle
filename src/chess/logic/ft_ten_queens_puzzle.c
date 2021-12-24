@@ -1,4 +1,4 @@
-typedef struct s_chess_style t_chess_style;
+#include "n_queens.h"
 
 int	ft_n_queens_puzzle(int N, t_chess_style style)
 {

@@ -1,4 +1,4 @@
-typedef struct s_chess_style t_chess_style;
+#include "n_queens.h"
 
 void	ft_solve(char *board, int N, int *solutions, t_chess_style style)
 {

@@ -3,12 +3,10 @@
 
 #define EMPTY -1
 
-#ifndef N
-#define N 8
-#endif
+typedef struct s_chess_style t_chess_style;
 
-int		ft_possible_queen(char board[N], int index, char h);
-void	ft_solve(char board[N], int *solutions);
-int		ft_ten_queens_puzzle(void);
+int		ft_possible_queen(char *board, int N, int index, char h);
+void	ft_solve(char *board, int N, int *solutions);
+int		ft_ten_queens_puzzle(int N, t_chess_style);
 
 #endif
