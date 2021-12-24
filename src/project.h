@@ -5,6 +5,7 @@
 #include <unistd.h>
 
 #include "output/output.h"
+#include "chess/logic/n_queens.h"
 #include "chess/style/chess_style.h"
 #include "chess/output/chess_output.h"
 

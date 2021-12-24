@@ -9,7 +9,7 @@ EXE_NAME=representation
 
 MAIN=src/main.c
 OUTPUT=bin/output/ft_putstr.o bin/output/ft_strlen.o bin/output/ft_putstrlen.o
-CHESS_LOGIC=bin/chess/logic/ft_possible_queen.o bin/chess/logic/ft_solve.o bin/chess/logic/ft_ten_queens_puzzle.o bin/chess/output/print_board.o
+CHESS_LOGIC=bin/chess/logic/ft_possible_queen.o bin/chess/logic/ft_solve.o bin/chess/logic/ft_n_queens_puzzle.o bin/chess/output/print_board.o
 STYLE_FILE=src/chess/style/classic_chess_style.h
 #STYLE_FILE=src/chess/style/alternative_chess_style.h
 
@@ -47,8 +47,8 @@ bin/chess/logic/ft_possible_queen.o: src/chess/logic/ft_possible_queen.c
 	$(COMPILE) -c src/chess/logic/ft_possible_queen.c -o bin/chess/logic/ft_possible_queen.o
 bin/chess/logic/ft_solve.o: src/chess/logic/ft_solve.c
 	$(COMPILE) -c src/chess/logic/ft_solve.c -o bin/chess/logic/ft_solve.o
-bin/chess/logic/ft_ten_queens_puzzle.o: src/chess/logic/ft_ten_queens_puzzle.c
-	$(COMPILE) -c src/chess/logic/ft_ten_queens_puzzle.c -o bin/chess/logic/ft_ten_queens_puzzle.o
+bin/chess/logic/ft_n_queens_puzzle.o: src/chess/logic/ft_n_queens_puzzle.c
+	$(COMPILE) -c src/chess/logic/ft_n_queens_puzzle.c -o bin/chess/logic/ft_n_queens_puzzle.o
 
 # Print_board
 bin/chess/output/print_board.o: bin/chess/output src/chess/output/print_board.c
