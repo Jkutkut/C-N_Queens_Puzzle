@@ -25,6 +25,6 @@ void	ft_solve(char *board, int N, int *solutions, t_chess_style style)
 		}
 		i++;
 	}
-	print_board(board, N, style);
 	*solutions = *solutions + 1;
+	print_board(board, N, style);
 }
