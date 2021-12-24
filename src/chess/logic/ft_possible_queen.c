@@ -1,3 +1,4 @@
+#define N
 int	ft_possible_queen(char board[N], int index, char h)
 {
 	int	i;

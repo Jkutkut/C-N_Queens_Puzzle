@@ -8,13 +8,14 @@ COMPILE=$(CC) $(FLAGS)
 EXE_NAME=representation
 
 MAIN=src/main.c
-OUTPUT_O=bin/output/ft_putstr.o bin/output/ft_strlen.o bin/output/ft_putstrlen.o
+OUTPUT=bin/output/ft_putstr.o bin/output/ft_strlen.o bin/output/ft_putstrlen.o
+CHESS_LOGIC=bin/chess/logic/ft_possible_queen.o bin/chess/logic/ft_solve.o bin/chess/logic/ft_ten_queens_puzzle.o bin/chess/output/print_board.o
 STYLE_FILE=src/chess/style/classic_chess_style.h
 #STYLE_FILE=src/chess/style/alternative_chess_style.h
 
 all: $(MAIN) binaries src/chess/style/style.h
 	$(info Compiling all into $(EXE_NAME))
-	$(COMPILE) $(MAIN) $(OUTPUT_O) -o $(EXE_NAME)
+	$(COMPILE) $(MAIN) $(OUTPUT) -o $(EXE_NAME)
 
 # Binary files
 bin:
@@ -22,8 +23,14 @@ bin:
 	mkdir bin
 bin/output: bin
 	mkdir bin/output
+bin/chess: bin
+	mkdir bin/chess
+bin/chess/logic: bin/chess
+	mkdir bin/chess/logic
+bin/chess/output: bin/chess
+	mkdir bin/chess/output
 
-binaries: bin/output $(OUTPUT_O)
+binaries: bin/output bin/chess/logic bin/chess/output $(OUTPUT) $(CHESS_LOGIC)
 
 # General Output
 bin/output/ft_putstr.o: src/output/ft_putstr.c
@@ -34,6 +41,14 @@ bin/output/ft_putstrlen.o: src/output/ft_putstrlen.c
 
 bin/output/ft_strlen.o: src/output/ft_strlen.c
 	$(COMPILE) -c src/output/ft_strlen.c -o bin/output/ft_strlen.o
+
+# Chess logic
+bin/chess/logic/ft_possible_queen.o: src/chess/logic/ft_possible_queen.c
+	$(COMPILE) -c src/chess/logic/ft_possible_queen.c -o bin/chess/logic/ft_possible_queen.o
+bin/chess/logic/ft_solve.o: src/chess/logic/ft_solve.c
+	$(COMPILE) -c src/chess/logic/ft_solve.c -o bin/chess/logic/ft_solve.o
+bin/chess/logic/ft_ten_queens_puzzle.o: src/chess/logic/ft_ten_queens_puzzle.c
+	$(COMPILE) -c src/chess/logic/ft_ten_queens_puzzle.c -o bin/chess/logic/ft_ten_queens_puzzle.o
 
 # Style
 src/chess/style/style.h:

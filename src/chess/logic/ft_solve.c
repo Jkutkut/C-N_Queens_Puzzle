@@ -1,3 +1,4 @@
+#include "../../project.h"
 typedef struct s_chess_style t_chess_style;
 
 void	ft_solve(char board[N], int *solutions, t_chess_style style)
