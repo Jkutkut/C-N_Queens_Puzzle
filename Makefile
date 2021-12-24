@@ -10,11 +10,15 @@ MAIN=src/main.c
 OUTPUT=bin/output/ft_putstr.o bin/output/ft_strlen.o bin/output/ft_putstrlen.o
 CHESS_LOGIC=bin/chess/logic/ft_possible_queen.o bin/chess/logic/ft_solve.o bin/chess/logic/ft_n_queens_puzzle.o bin/chess/output/print_board.o bin/atoi/ft_atoi.o
 
-CHESS_STYLE=classic
+all: classic_chess_style.h
 
-all: $(EXE_NAME)
+alternative: alternative_chess_style.h
 
-alternative: CHESS_STYLE=alternative $(EXE_NAME)
+# Style
+%_chess_style.h: src/chess/style/$@
+	$(info Usign the style from ./src/chess/style/$@)
+	@cp -f src/chess/style/$@ src/chess/style/style.h
+	@make $(EXE_NAME)
 
 # Binary files
 $(EXE_NAME): $(MAIN) binaries  src/chess/style/style.h
@@ -70,11 +74,6 @@ bin/chess/logic/ft_n_queens_puzzle.o: src/chess/logic/ft_n_queens_puzzle.c
 # Print_board
 bin/chess/output/print_board.o: bin/chess/output src/chess/output/print_board.c
 	$(COMPILE) -c src/chess/output/print_board.c -o bin/chess/output/print_board.o
-
-# Style
-src/chess/style/style.h: src/chess/style/$(CHESS_STYLE)_chess_style.h
-	$(info Usign the style from $(STYLE_FILE))
-	@cp -f src/chess/style/$(CHESS_STYLE)_chess_style.h src/chess/style/style.h
 
 # Clean logic
 .DELETE_ON_ERROR:
