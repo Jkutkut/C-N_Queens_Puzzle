@@ -55,7 +55,7 @@ void	print_line_piece(char board[N], t_chess_style style, int h)
 }
 
 
-void	print_board(char	board[N], t_chess_style style)
+void	print_board(char board[N], t_chess_style style)
 {
 	int	i;
 

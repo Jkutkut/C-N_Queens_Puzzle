@@ -1,4 +1,6 @@
-void	ft_solve(char board[N], int *solutions)
+typedef struct s_chess_style t_chess_style;
+
+void	ft_solve(char board[N], int *solutions, t_chess_style style)
 {
 	int	i;
 	int	h;
@@ -14,7 +16,7 @@ void	ft_solve(char board[N], int *solutions)
 				if (possible(board, i, h + 48))
 				{
 					board[i] = h + 48;
-					solve(board, solutions);
+					ft_solve(board, solutions, style);
 					board[i] = EMPTY;
 				}
 				h++;
@@ -23,6 +25,6 @@ void	ft_solve(char board[N], int *solutions)
 		}
 		i++;
 	}
-	print(board);
+	print_board(board, style);
 	*solutions = *solutions + 1;
 }
