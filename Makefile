@@ -14,7 +14,9 @@ CHESS_LOGIC=bin/chess/logic/ft_possible_queen.o bin/chess/logic/ft_solve.o bin/c
 all: classic
 
 classic: classic_chess_style.h $(EXE_NAME)
+classic_centered: classic_centered_chess_style.h $(EXE_NAME)
 alternative: alternative_chess_style.h $(EXE_NAME)
+#YYYY: YYYY_chess_style.h $(EXE_NAME)
 
 # Style
 %_chess_style.h: src/chess/style/$@
