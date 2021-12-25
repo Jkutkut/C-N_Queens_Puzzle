@@ -1,6 +1,24 @@
 # N Queens puzzle:
 
-This repository contains logic to calculate and visualice the N Queens problem. It features the use of recursive backtracking to find the solutions and a customizable visualization style.
+This repository contains logic to calculate and visualice the [N Queens problem](https://en.wikipedia.org/wiki/Eight_queens_puzzle). It features the use of recursive backtracking to find the solutions and a customizable visualization style.
+
+    ┼───────┼───────┼───────┼───────┼
+    │       │·······│       │·······│
+    │       │·······│   ♛   │·······│
+    │       │·······│       │·······│
+    ┼───────┼───────┼───────┼───────┼
+    │·······│       │·······│       │
+    │·· ♛ ··│       │·······│       │
+    │·······│       │·······│       │
+    ┼───────┼───────┼───────┼───────┼
+    │       │·······│       │·······│
+    │       │·······│       │·· ♛ ··│
+    │       │·······│       │·······│
+    ┼───────┼───────┼───────┼───────┼
+    │·······│       │·······│       │
+    │·······│   ♛   │·······│       │
+    │·······│       │·······│       │
+    ┼───────┼───────┼───────┼───────┼
 
 ## Use:
 
@@ -42,23 +60,7 @@ Imagine you want to create a style called YYYY. Here are the steps:
         YYYY: YYYY_chess_style.h $(EXE_NAME)
 - That's it! Just recompile using the new style!
 
-## Examples:
 
-### Classic-centered:
-    ┼───────┼───────┼───────┼───────┼
-    │       │·······│       │·······│
-    │       │·······│   ♛   │·······│
-    │       │·······│       │·······│
-    ┼───────┼───────┼───────┼───────┼
-    │·······│       │·······│       │
-    │·· ♛ ··│       │·······│       │
-    │·······│       │·······│       │
-    ┼───────┼───────┼───────┼───────┼
-    │       │·······│       │·······│
-    │       │·······│       │·· ♛ ··│
-    │       │·······│       │·······│
-    ┼───────┼───────┼───────┼───────┼
-    │·······│       │·······│       │
-    │·······│   ♛   │·······│       │
-    │·······│       │·······│       │
-    ┼───────┼───────┼───────┼───────┼
+# Considerations
+- Due to the inefficiency of printing on the screen each solution, for a grid greater than 13-14 the output becomes too great. However, the code is designed so you can just use the part to find the solutions with a bit of modification.
+- The total number of solutions is stored on a int variable to count them. If you want to track the number for bigger sizes, remember to use a variable big enough.
